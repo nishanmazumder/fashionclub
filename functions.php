@@ -57,6 +57,16 @@ require_once NM_DIR_PATH . '/inc/template-functions.php';
  */
 require_once NM_DIR_PATH . '/inc/template-tags.php';
 
+
+/**
+ * Woocommerce
+ */
+
+if (class_exists('WooCommerce')) {
+   require_once NM_DIR_PATH . '/inc/wooCommerce.php';
+}
+
+
 /**
  * Load Require plugin by TGM
  */

@@ -398,7 +398,7 @@ button.w3view-cart:focus{
 }
 .resp-tabs-list {
     list-style: none;
-    padding: 0 0 3em;
+    /* padding: 0 0 3em; */
     margin: 0 auto;
     text-align: center;
 }
@@ -2634,7 +2634,7 @@ p.w3-agile{
 		height: 24px;
 	}
 	#PPsbmincart {
-		left:25%:
+		left:25%;
 		top: 25%;
 	}
 
@@ -3003,7 +3003,7 @@ p.w3-agile{
 	}
 	#PPsbmincart {
 		left: 5%;
-		top:35%:
+		top:35%;
 	}
 }
 @media screen and (max-width: 375px){

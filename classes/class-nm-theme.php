@@ -68,6 +68,10 @@ class NM_THEME
 
         add_theme_support('align-wide');
 
+        //Woocommerce
+        add_theme_support('woocommerce');
+
+
         // global $content_width;
         // if(!isset($content_width)){
         //     $content_width = 1240;
