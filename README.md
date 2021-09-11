@@ -1,2 +1,1 @@
-<h1>University wordpress template<h1># fashionclub
-# fashionclub
+<h1>FashionClub - Woocommerce<h1>
