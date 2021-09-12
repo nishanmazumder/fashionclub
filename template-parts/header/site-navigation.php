@@ -28,7 +28,7 @@ $menu_items = wp_get_nav_menu_items($menu_id);
 
             <div class="nm_user_navi">
                 <?php $current_user = wp_get_current_user(); ?>
-                Hello <?php echo $current_user->user_login; ?> || <a href="<?php echo learn_press_get_page_link('profile'); ?>">Profile</a>
+                Hello <?php echo $current_user->user_login; ?> || <a href="">Profile</a>
             </div>
 
         <?php endif; ?>

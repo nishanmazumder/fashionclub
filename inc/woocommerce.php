@@ -14,8 +14,8 @@ remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar');
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 
-add_action('woocommerce_after_main_content', 'nm_woo_main_container_end', 11);
 add_action('woocommerce_before_main_content', 'nm_woo_main_container_start', 11);
+add_action('woocommerce_after_main_content', 'nm_woo_main_container_end', 11);
 
 add_action('template_redirect', 'nm_load_shop_layout');
 
@@ -36,12 +36,12 @@ function nm_load_shop_layout()
 
 function nm_woo_main_container_start()
 {
-   echo '<div class="container"><div class="row">';
+   echo '<div class="content"><div class="container">';
 }
 
 function nm_woo_sidebar_container_start()
 {
-   echo '<div class="col-md-4">';
+   echo '<div class="col-md-4 w3ls_dresses_grid_left">';
 }
 
 function nm_woo_sidebar_container_end()
@@ -51,7 +51,7 @@ function nm_woo_sidebar_container_end()
 
 function nm_woo_product_container_start()
 {
-   echo '<div class="col-md-8">';
+   echo '<div class="col-md-8 col-sm-8 women-dresses">';
 }
 
 function nm_woo_product_container_end()
@@ -73,15 +73,23 @@ function nm_remove_title($bool)
 }
 
 //Page description
-add_action('woocommerce_archive_description', 'nm_archive_description');
-function nm_archive_description()
-{
-   echo "this is page description";
-}
+// add_action('woocommerce_archive_description', 'nm_archive_description');
+// function nm_archive_description()
+// {
+//    echo "this is page description";
+// }
 
 //Add description after title
-add_action('woocommerce_after_shop_loop_item_title', 'the_excerpt');
+// add_action('woocommerce_after_shop_loop_item_title', 'the_excerpt');
 
+// Woocommerce remove breadcrumb
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+
+// Woocommerce remove notice
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+
+// Woocommerce filter
+remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 
 // Cart Ajax
 /**
