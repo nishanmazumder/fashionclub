@@ -60,7 +60,7 @@ class Assets
          //Ajax Localize
          wp_localize_script('main-js', 'ajax_obj', [
             'ajax_url' => admin_url('admin-ajax.php'),
-            //'nmnonce' => wp_create_nonce("23#as14blak&&90ad1584")
+            'nmnonce' => wp_create_nonce("23#as14blak&&90ad1584")
         ]);
     }
 }

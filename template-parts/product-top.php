@@ -45,7 +45,7 @@
 
                         <?php
 
-                        $category = ['tshirts', 'hoodies'];
+                        $category = ['tshirts', 'hoodies', 'accessories'];
 
                         $args = [
                             'post_type'      => 'product',
@@ -68,12 +68,9 @@
                             while ($products->have_posts()) : $products->the_post();
                                 global $product;
 
-                                //$average = intval($product->get_average_rating());
                                 $average = $product->get_average_rating();
                                 $rating_left = 5 - $average;
 
-                                //echo '<pre>'; 
-                                //print_r($rating_left);
                         ?>
                                 <div class="col-md-3 top-product-grids">
                                     <a href="<?php esc_url(the_permalink()); ?>">
@@ -100,8 +97,6 @@
                                 </div>
 
                         <?php
-                            //global $product;
-                            //echo '<br /><a href="' . get_permalink() . '">' . woocommerce_get_product_thumbnail() . ' ' . get_the_title() . '</a>';
                             endwhile;
                         endif;
 

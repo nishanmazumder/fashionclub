@@ -369,6 +369,6 @@
 		</div>
 		<div class="clearfix"></div>
 		<p class="copy-right">© 2016 Fashion Club . All rights reserved | Design by <a href="http://w3layouts.com">
-				W3layouts.</a></p>
+				W3layouts.</a> Developed by <a href="https://bdsoftcreation.com/">BDSOFTcr</a></p>
 	</div>
 </div>

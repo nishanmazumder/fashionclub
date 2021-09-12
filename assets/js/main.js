@@ -16,7 +16,7 @@ jQuery(document).ready(function ($) {
             data: {
                 action: action,
                 value: values,
-                //noce: ajax_obj.nmnonce
+                nonce: ajax_obj.nmnonce
             },
 
             success: function (res) {

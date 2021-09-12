@@ -136,7 +136,11 @@ add_action('wp_ajax_nopriv_get_top_products', 'get_filter_products2');
 
 function get_filter_products2()
 {
+
+   check_ajax_referer('23#as14blak&&90ad1584', 'nonce');
+
    $category = $_POST['value'];
+   $category_all = ['tshirts', 'hoodies', 'accessories'];
 
    $args = [
       'post_type'      => 'product',
@@ -153,6 +157,14 @@ function get_filter_products2()
             'terms'    => $category,
          ]
       ];
+   } else {
+      $args['tax_query'] = [
+         [
+            'taxonomy' => 'product_cat',
+            'field'    => 'slug',
+            'terms'    => $category_all,
+         ]
+      ];
    }
 
    $products = new WP_Query($args);
@@ -163,7 +175,19 @@ function get_filter_products2()
       while ($products->have_posts()) : $products->the_post();
          global $product;
 
-         //$data .= '<div id="nmTabClass">';
+         $average = $product->get_average_rating();
+         $rating_left = 5 - $average;
+
+         $yellow_rate = '';
+         for ($i = 0; $i < round($average); $i++) {
+            $yellow_rate .= '<i class="fa fa-star yellow-star" aria-hidden="true"></i>';
+         }
+
+         $gray_rate = '';
+         for ($i = 0; $i < round($rating_left); $i++) {
+            $gray_rate .= '<i class="fa fa-star gray-star" aria-hidden="true"></i>';
+         }
+
          $data .= '<div class="col-md-3 top-product-grids">';
          $data .= '<a href="' . esc_url(get_the_permalink()) . '">';
          $data .= '<div class="product-img">';
@@ -171,11 +195,10 @@ function get_filter_products2()
          $data .= '<div class="p-mask">';
          $data .= '<button class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> View Product</button>';
          $data .= '</div></div></a>';
-         $data .= '<h3>Rating</h3>';
+         $data .= $yellow_rate.$gray_rate;
          $data .= '<h4>' . __(get_the_title(), 'nm_theme') . '</h4>';
          $data .= '<h5>' . $product->get_price_html() . '</h5>';
          $data .= '</div>';
-      //$data .= '</div></div>';
 
       endwhile;
    endif;
