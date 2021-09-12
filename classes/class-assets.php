@@ -57,5 +57,10 @@ class Assets
         wp_enqueue_script('minicart', 'https://cdnjs.cloudflare.com/ajax/libs/minicart/3.0.6/minicart.min.js', array('jquery'), '', true);
         wp_enqueue_script('main-js', NM_DIR_URI . '/assets/js/main.js', array('jquery'), filemtime(NM_DIR_PATH . '/assets/js/main.js'), true); //footer
 
+         //Ajax Localize
+         wp_localize_script('main-js', 'ajax_obj', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            //'nmnonce' => wp_create_nonce("23#as14blak&&90ad1584")
+        ]);
     }
 }

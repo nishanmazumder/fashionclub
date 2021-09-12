@@ -16,9 +16,9 @@
                 <ul class="resp-tabs-list">
                     <?php
                     $product_cats = [
-                        "mens" => "Men's",
-                        "women" => "Women",
-                        "others" => "Others"
+                        "tshirts" => "Men's",
+                        "hoodies" => "Women",
+                        "accessories" => "Others"
                     ];
 
                     if (!empty($product_cats) && is_array($product_cats)) {
@@ -40,7 +40,7 @@
                 </ul>
                 <div class="clearfix"> </div>
 
-                <div class="resp-tabs-container">
+                <div class="resp-tabs-container" id="nmProductsHome">
                     <div class="tab-1 resp-tab-content">
 
                         <?php
@@ -50,6 +50,7 @@
                         $args = [
                             'post_type'      => 'product',
                             'post_status'         => 'publish',
+                            'orderby' => 'publish_date',
                             'posts_per_page' => 8,
                             //'product_cat'    => 'hoodies'
                             'tax_query'           => [
@@ -67,10 +68,12 @@
                             while ($products->have_posts()) : $products->the_post();
                                 global $product;
 
-                                $average = intval($product->get_average_rating());
+                                //$average = intval($product->get_average_rating());
+                                $average = $product->get_average_rating();
+                                $rating_left = 5 - $average;
 
-                                // echo '<pre>'; 
-                                // print_r($product);
+                                //echo '<pre>'; 
+                                //print_r($rating_left);
                         ?>
                                 <div class="col-md-3 top-product-grids">
                                     <a href="<?php esc_url(the_permalink()); ?>">
@@ -81,23 +84,16 @@
                                             </div>
                                         </div>
                                     </a>
+
                                     <?php
-
-                                    for ($i = 0; $i < 5; $i++) {
-                                        echo '<i class="fa fa-star gray-star" aria-hidden="true"></i>';
-
-
-                                        // if ($average == 0) {
-                                        //     echo '<i class="fa fa-star gray-star" aria-hidden="true"></i>';
-                                        // } else {
-                                        //     echo '<i class="fa fa-star yellow-star" aria-hidden="true"></i>';
-                                        // }
+                                    for ($i = 0; $i < round($average); $i++) {
+                                        echo '<i class="fa fa-star yellow-star" aria-hidden="true"></i>';
                                     }
 
+                                    for ($i = 0; $i < round($rating_left); $i++) {
+                                        echo '<i class="fa fa-star gray-star" aria-hidden="true"></i>';
+                                    }
                                     ?>
-
-
-
 
                                     <h4><?php esc_html_e(the_title(), 'nm_theme'); ?></h4>
                                     <h5><?php echo $product->get_price_html(); ?></h5>

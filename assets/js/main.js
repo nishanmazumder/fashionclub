@@ -1,5 +1,31 @@
 jQuery(document).ready(function ($) {
 
+    //Product Tab
+    //Get prioject data from post type - Project
+    $('.resp-tab-item').on('click', function () {
+        //e.preventDefault();
+        get_response('get_top_products', $(this).data('slug'))
+        //$('#nmTabClass').addClass('tab-1 resp-tab-content')
+    });
+
+    //Get Ajax response
+    function get_response(action, values) {
+        $.ajax({
+            url: ajax_obj.ajax_url,
+            method: 'POST',
+            data: {
+                action: action,
+                value: values,
+                //noce: ajax_obj.nmnonce
+            },
+
+            success: function (res) {
+                $("#nmProductsHome").html(res.data);
+                console.log(res)
+            }
+        });
+    }
+
     //Form Validation
     // var validator = $( "#nmApplyForm" ).validate();
     // validator.form();
@@ -48,20 +74,20 @@ jQuery(document).ready(function ($) {
     $('.example1').wmuSlider();
 
     //Minicart
-    w3ls1.render();
+    // w3ls1.render();
 
-    w3ls1.cart.on('w3sb1_checkout', function (evt) {
-        var items, len, i;
+    // w3ls1.cart.on('w3sb1_checkout', function (evt) {
+    //     var items, len, i;
 
-        if (this.subtotal() > 0) {
-            items = this.items();
+    //     if (this.subtotal() > 0) {
+    //         items = this.items();
 
-            for (i = 0, len = items.length; i < len; i++) {
-                items[i].set('shipping', 0);
-                items[i].set('shipping2', 0);
-            }
-        }
-    });
+    //         for (i = 0, len = items.length; i < len; i++) {
+    //             items[i].set('shipping', 0);
+    //             items[i].set('shipping2', 0);
+    //         }
+    //     }
+    // });
 
 });
 
