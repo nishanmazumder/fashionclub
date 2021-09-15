@@ -31,7 +31,25 @@ function nm_load_shop_layout()
       //Product
       add_action('woocommerce_before_main_content', 'nm_woo_product_container_start', 15);
       add_action('woocommerce_after_main_content', 'nm_woo_product_container_end', 15);
+
+      //Product after loop
+      remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash');
+
+      //Rating remove
+      remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+
+      //title tag change
+      remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
+      add_action('woocommerce_shop_loop_item_title', 'nm_product_title', 10);
+
+      //add to cart remove
+      remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
    }
+}
+
+function nm_product_title(){
+   
+   the_title( '<h4>','</h4>' );
 }
 
 function nm_woo_main_container_start()
@@ -203,7 +221,7 @@ function get_filter_products2()
          $data .= '<div class="p-mask">';
          $data .= '<button class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> View Product</button>';
          $data .= '</div></div></a>';
-         $data .= $yellow_rate.$gray_rate;
+         $data .= $yellow_rate . $gray_rate;
          $data .= '<h4>' . __(get_the_title(), 'nm_theme') . '</h4>';
          $data .= '<h5>' . $product->get_price_html() . '</h5>';
          $data .= '</div>';

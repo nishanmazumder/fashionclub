@@ -537,10 +537,12 @@ i.gray-star{
     color: #484848;
 	margin:10px 0;
 }
-.top-product-grids h5,.women-grids h5{
+.top-product-grids h5,.women-grids h5, .price{
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
+	color: #000;
 }
+
 button.w3ls-cart.pw3ls-cart {
     background: transparent;
     border: none;
