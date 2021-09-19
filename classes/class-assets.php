@@ -35,7 +35,8 @@ class Assets
         wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css');
 
         if (is_product()) {
-            wp_enqueue_style('flexslider-css', 'https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.4.0/flexslider.css');
+            wp_enqueue_style('flexslider-css', NM_DIR_URI . '/assets/css/flexslider.css'); //footer
+            // wp_enqueue_style('flexslider-css', 'https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.4.0/flexslider.css');
         }
 
         wp_enqueue_style('main-css', NM_DIR_URI . '/assets/css/style.css', [], filemtime(NM_DIR_PATH . '/assets/css/style.css'), 'all');

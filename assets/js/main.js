@@ -89,10 +89,14 @@ jQuery(document).ready(function ($) {
     //     }
     // });
 
-});
+    //Fleslider
+    $('.flexslider').flexslider({
+		animation: "slide",
+		controlNav: "thumbnails"
+	  });
 
-//Flexisel
-$(window).load(function () {
+    //Flexisel
+
     $("#flexiselDemo1").flexisel({
         visibleItems: 4,
         animationSpeed: 1000,
@@ -115,5 +119,7 @@ $(window).load(function () {
             }
         }
     });
+
+
 
 });
