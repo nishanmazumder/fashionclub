@@ -64,16 +64,16 @@ if (empty($product) || !$product->is_visible()) {
 
 	?>
 
-	<h4>
-		<?php
-		/**
-		 * Hook: woocommerce_shop_loop_item_title.
-		 *
-		 * @hooked woocommerce_template_loop_product_title - 10
-		 */
 
-		do_action('woocommerce_shop_loop_item_title'); ?>
-	</h4>
+	<?php
+	/**
+	 * Hook: woocommerce_shop_loop_item_title.
+	 *
+	 * @hooked woocommerce_template_loop_product_title - 10
+	 */
+
+	do_action('woocommerce_shop_loop_item_title'); ?>
+
 	<?php
 	/**
 	 * Hook: woocommerce_after_shop_loop_item_title.

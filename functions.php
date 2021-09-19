@@ -37,14 +37,6 @@ nm_theme_get_instance();
 function nm_theme_get_instance()
 {
    \NM_THEME\Classes\NM_THEME::get_instance();
-
-   if (function_exists('is_plugin_active')) {
-      if (!is_plugin_active('elementor/elementor.php')) {
-         return;
-      } else {
-         \NM_THEME\Classes\Widget::get_instance();
-      }
-   }
 }
 
 /**
