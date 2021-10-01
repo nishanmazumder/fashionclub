@@ -31,24 +31,22 @@ if (post_password_required()) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
 }
+
 ?>
 
 <div class="single-page">
 	<div class="single-page-row" id="detail-21">
 		<div class="col-md-6 single-top-left">
-			<div class="flexslider">
-				<ul class="slides">
-					<li data-thumb="<?php echo NM_DIR_URI; ?>/assets/images/s1.jpg">
-						<div class="thumb-image detail_images"> <img src="<?php echo NM_DIR_URI; ?>/assets/images/s1.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-					</li>
-					<li data-thumb="<?php echo NM_DIR_URI; ?>/assets/images/s2.jpg">
-						<div class="thumb-image"> <img src="<?php echo NM_DIR_URI; ?>/assets/images/s2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-					</li>
-					<li data-thumb="<?php echo NM_DIR_URI; ?>/assets/images/s3.jpg">
-						<div class="thumb-image"> <img src="<?php echo NM_DIR_URI; ?>/assets/images/s3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-					</li>
-				</ul>
-			</div>
+
+			<?php
+			/**
+			 * Hook: woocommerce_before_single_product_summary.
+			 *
+			 * @hooked woocommerce_show_product_sale_flash - 10
+			 * @hooked woocommerce_show_product_images - 20
+			 */
+			do_action('woocommerce_before_single_product_summary');
+			?>
 		</div>
 
 		<div class="col-md-6 single-top-right">

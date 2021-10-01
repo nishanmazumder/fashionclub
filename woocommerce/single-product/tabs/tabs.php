@@ -31,7 +31,7 @@ $product_tabs = apply_filters('woocommerce_product_tabs', array());
 
 if (!empty($product_tabs)) : ?>
 
-	<div class="collpse tabs">
+	<div class="collpse tabs nm_tab">
 		<div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
 			<?php foreach ($product_tabs as $key => $product_tab) : ?>
 

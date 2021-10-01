@@ -13,6 +13,22 @@ require_once NM_DIR_PATH . '/inc/woocommerce/shop.php';
 // Single product
 require_once NM_DIR_PATH . '/inc/woocommerce/single.php';
 
+//Main Container
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+add_action('woocommerce_before_main_content', 'nm_woo_main_container_start', 11);
+add_action('woocommerce_after_main_content', 'nm_woo_main_container_end', 11);
+
+//Remove sidebar
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar');
+
+//Shop Layout
+add_action('template_redirect', 'nm_load_shop_layout');
+
+//Single Layout
+add_action('template_redirect', 'nm_load_single_layout');
+
 //Product Home 
 add_action('wp_ajax_get_top_products', 'get_filter_products2');
 add_action('wp_ajax_nopriv_get_top_products', 'get_filter_products2');

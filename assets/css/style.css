@@ -1569,7 +1569,7 @@ a.pa_italic:focus {
     color: #0280e1; 
 }
 .single-price ul li {
-    margin-right: 1em;
+    margin-right: 10px;
     font-size: 1em;
     color: #999;
 }
@@ -1614,13 +1614,13 @@ p.single-price-text {
 	border-color:#00bdbd;
 }
 .single-top-right .w3ls-cart i.fa {
-    margin-right: 3px;
+    margin-right: 10px;
 }
-.single-top-right .w3ls-cart.w3ls-cart-like {
-    margin-left: 1em;
-    background: none;
-    border: 1px solid  #00e58b;
-    color: #00e58b;
+.single-top-right .w3ls-cart.w3ls-cart-like, .add_to_wishlist {
+    margin-left: 1em !important;
+    background: none !important;
+    border: 1px solid  #00e58b !important;
+    color: #00e58b !important;
 }
 .single-top-right .w3ls-cart.w3ls-cart-like:hover{ 
     background:  #00e58b;

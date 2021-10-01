@@ -6,21 +6,6 @@
  * @package NM_THEME
  */
 
-//Main Container
-remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-
-add_action('woocommerce_before_main_content', 'nm_woo_main_container_start', 11);
-add_action('woocommerce_after_main_content', 'nm_woo_main_container_end', 11);
-
-//Remove sidebar
-remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar');
-
-//Shop Layout
-add_action('template_redirect', 'nm_load_shop_layout');
-
-//Single Layout
-add_action('template_redirect', 'nm_load_single_layout');
 
 function nm_load_shop_layout()
 {
@@ -137,7 +122,6 @@ function nm_shop_product_price()
     // }
 
     echo '<h5 class="price">' . get_woocommerce_currency_symbol() . $product->get_price() . '</h5>';
-
 }
 
 //Page description
@@ -191,3 +175,17 @@ function nm_theme_optional_zip($p_fields)
     $p_fields['postcode']['required'] = false;
     return $p_fields;
 }
+
+//Add category widget
+// add_action('woocommerce_before_shop_loop', 'nm_add_product_categoy');
+// function nm_add_product_categoy()
+// {
+//     $args = [
+//         'title' => '',
+//         'dropdown' => true,
+//         'count' => true,
+//         'hide_empty' => true
+//     ];
+
+//     the_widget('WC_Widget_Product_Categories',  $args);
+// }

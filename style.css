@@ -15,17 +15,238 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 
 
 /* Home */
-ul.resp-tabs-list li:before{
+ul.resp-tabs-list li:before {
     display: none;
 }
 
-ul.resp-tabs-list li:after{
+ul.resp-tabs-list li:after {
     display: none;
 }
 
-.top-product-grids{
+.top-product-grids {
     margin-top: 40px;
 }
-@media only screen and (max-width:430px) {
 
+/* page */
+.content{
+    padding: 30px 0px;
+}
+.nm-page{
+    margin-top: 20px;
+}
+
+/* Woocommerce */
+.woocommerce-message,
+.woocommerce-info {
+    border-top-color: #00e58b;
+}
+
+.woocommerce-message::before,
+.woocommerce-info::before, 
+.woocommerce-error::before {
+    color: #00e58b;
+}
+
+.wc-forward,
+.button, 
+.submit {
+    font-weight: 300 !important;
+    -webkit-transition: .5s all !important;
+    -moz-transition: .5s all !important;
+    -o-transition: .5s all !important;
+    -ms-transition: .5s all !important;
+    transition: .5s all !important;
+    background: #00e58b !important;
+    outline: none !important;
+    border: 1px solid #00e58b !important;
+    color: #fff !important;
+}
+
+.wc-forward:hover, .button:hover, .submit:hover {
+    background: #00bdbd !important;
+    border-color: #00bdbd !important;
+}
+
+.quantity {
+    margin: 0px 5px 0px 0px;
+}
+
+.woocommerce .quantity .qty {
+    height: 38px;
+    margin-top: 1px;
+}
+
+.variations, .group_table {
+    margin-bottom: 30px;
+}
+
+.group_table a{
+    color: #00e58b;
+    font-weight: 400;
+}
+
+.woocommerce-grouped-product-list-item__price{
+    padding-left: 20px;
+}
+
+.woocommerce-grouped-product-list-item__price span{
+    color: #999;
+}
+
+.variations .label {
+    display: inline-block;
+    padding: .2em .6em .3em 0em;
+    min-width: 75px;
+    font-size: 16px;
+    font-weight: 300 !important;
+    line-height: 1;
+    color: #999;
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: -webkit-baseline-middle;
+    border-radius: .25em;
+}
+
+.variations .label label {
+    font-weight: 400;
+}
+
+.value {
+    background: transparent;
+    border: none;
+}
+
+.value select {
+    border-color: #999;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.single_variation {
+    margin-bottom: 30px;
+}
+
+.reset_variations {
+    color: #00e58b;
+}
+
+.nm_tab .panel-body {
+    background: #fff;
+}
+
+.nm_tab .panel-body h2 {
+    margin-bottom: 15px;
+}
+
+/* Wishlist */
+.yith-wcwl-add-to-wishlist {
+    margin-top: 0px !important;
+    display: inline-block !important;
+}
+
+.add_to_wishlist {
+    padding: 12px !important;
+}
+
+.add_to_wishlist span {
+    font-weight: normal !important;
+}
+
+
+.yith-wcwl-wishlistaddedbrowse {
+    margin-left: 15px !important;
+}
+
+.yith-wcwl-wishlistexistsbrowse {
+    margin-top: 15px !important;
+    margin-left: -50px !important;
+}
+
+/* Tab */
+.comment-form{
+    width: 30%;
+}
+
+.comment-form input{
+    display: block;
+    width: 100%;
+}
+
+.comment-form input, textarea{
+    border: 1px solid #999;
+}
+
+.comment-form-cookies-consent input{
+    display: inline-block;
+    width: auto;
+}
+
+.comment-form-cookies-consent label{
+    display: initial;
+}
+
+.woocommerce #review_form #respond p{
+    margin: 10 0 10px;
+}
+
+
+/* Cart */
+.shop_table {
+    margin-top: 20px !important;
+}
+
+.woocommerce table.shop_table th{
+    font-size: 16px;
+    text-align: center;
+}
+
+.woocommerce table.shop_table td{
+    font-size: 16px;
+    /* text-align: center; */
+}
+
+.coupon input {
+    width: 120px !important;
+}
+
+/* Order */
+#place_order{
+    margin-top: 20px;
+}
+.woocommerce-billing-fields__field-wrapper label{
+    color: #999;
+}
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    outline: 0;
+    line-height: normal;
+    border: 1px solid #999;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #999;
+}
+
+
+@media only screen and (max-width:1030px) {
+    .flex-viewport{
+        left: 30px;
+    }
+    .comment-form{
+        width: 100%;
+    }
+}
+@media only screen and (max-width:780px) {
+    .single-top-left{
+        margin-left: 25px;
+    }
+    .flex-viewport{
+        left: 50px;
+    }
+}
+@media only screen and (max-width:430px) {
+    .flex-viewport{
+        left: 30px;
+    }
 }
