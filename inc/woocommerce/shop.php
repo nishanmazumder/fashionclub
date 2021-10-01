@@ -9,7 +9,7 @@
 
 function nm_load_shop_layout()
 {
-    if (is_shop()) {
+    if (is_shop() || is_product_category()) {
 
         //Sidebar
         add_action('woocommerce_before_main_content', 'nm_woo_sidebar_container_start', 12);
@@ -51,7 +51,7 @@ function nm_load_shop_layout()
 //Shop
 function nm_woo_main_container_start()
 {
-    if (is_shop()) {
+    if (is_shop() || is_product_category()) {
         echo '<div class="content"><div class="container">';
     } elseif (is_product()) {
         echo '<div class="products"><div class="container">';

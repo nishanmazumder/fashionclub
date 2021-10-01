@@ -18,10 +18,7 @@
     <div class="w3ls_dresses_grid_left_grid_sub">
         <div class="ecommerce_dres-type">
             <ul>
-                <li><a href="men.html">Casuals</a></li>
-                <li><a href="men.html">Slacks</a></li>
-                <li><a href="men.html">Jeans</a></li>
-                <li><a href="men.html">Shirts</a></li>
+                <?php do_action('nm_woo_sidebar_categories');  ?>
             </ul>
         </div>
     </div>

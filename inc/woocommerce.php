@@ -106,3 +106,30 @@ function get_filter_products2()
    wp_send_json_success($data, 200);
    wp_die();
 }
+
+//Sidebar Categories
+add_action('nm_woo_sidebar_categories', 'nm_woo_sidebar_categories_display', 10);
+
+function nm_woo_sidebar_categories_display()
+{
+
+   $terms = get_terms(array(
+      'taxonomy' => 'product_cat',
+      'hide_empty' => false,
+   ));
+
+   if (!empty($terms) && is_array($terms)) {
+
+      $allowed_tags = [
+         'li' => [],
+         'a' => [
+            'href' => []
+         ]
+      ];
+
+      foreach ($terms as $term) {   
+         echo wp_kses('<li><a href="/product-category/' . $term->slug . '">' . $term->name . '</a></li>', $allowed_tags);
+      }
+   }
+
+}

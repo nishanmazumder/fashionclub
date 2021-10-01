@@ -35,7 +35,40 @@ ul.resp-tabs-list li:after {
     margin-top: 20px;
 }
 
-/* Woocommerce */
+/* Shop */
+.top-product-grids, .women-grids{
+    margin-bottom: 20px;
+}
+.woocommerce nav.woocommerce-pagination ul {
+    display: block;
+    white-space: nowrap;
+    padding: 0;
+    clear: both;
+    border: none;
+    border-right: none;
+    padding-top: 30px;
+}
+.woocommerce nav.woocommerce-pagination ul li {
+    border: 1px solid #999;
+    margin: 0;
+    float: none;
+    display: inline;
+    overflow: hidden;
+}
+
+.woocommerce nav.woocommerce-pagination ul li span{
+    padding: 8px 14px;
+}
+
+.woocommerce nav.woocommerce-pagination ul li a{
+    padding: 8px 14px;
+}
+
+.woocommerce nav.woocommerce-pagination ul li span.current {
+    background: #00e58b;
+    color: #fff;
+}
+/* Single */
 .woocommerce-message,
 .woocommerce-info {
     border-top-color: #00e58b;
