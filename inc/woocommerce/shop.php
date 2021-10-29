@@ -83,6 +83,8 @@ function nm_woo_product_container_end()
 function nm_woo_main_container_end()
 {
     if (is_shop() || is_product()) {
+        do_action('nm_woo_get_variation');
+
         echo '</div></div>';
     } else {
         echo '</div>';

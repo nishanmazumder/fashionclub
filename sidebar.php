@@ -28,12 +28,7 @@
     <div class="w3ls_dresses_grid_left_grid_sub">
         <div class="ecommerce_color">
             <ul>
-                <li><a href="#"><i></i> Red(5)</a></li>
-                <li><a href="#"><i></i> Brown(2)</a></li>
-                <li><a href="#"><i></i> Yellow(3)</a></li>
-                <li><a href="#"><i></i> Violet(6)</a></li>
-                <li><a href="#"><i></i> Orange(2)</a></li>
-                <li><a href="#"><i></i> Blue(1)</a></li>
+                <?php do_action('nm_woo_get_variation'); ?>
             </ul>
         </div>
     </div>
@@ -53,7 +48,7 @@
 </div>
 <div class="w3ls_dresses_grid_left_grid">
     <div class="dresses_img_hover">
-        <img src="<?php echo NM_DIR_URI;?>/assets/images/offer2.jpg" alt=" " class="img-responsive" />
+        <img src="<?php echo NM_DIR_URI; ?>/assets/images/offer2.jpg" alt=" " class="img-responsive" />
         <div class="dresses_img_hover_pos">
             <h4>Upto<span>50%</span><i>Off</i></h4>
         </div>

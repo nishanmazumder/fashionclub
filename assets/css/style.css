@@ -1044,23 +1044,23 @@ p.sbmincart-empty-text {
     display: inline-block;
     margin-right: 1em;
     border-radius: 20px;
-    background: red;
+    background: #0000F7;
 }
 .ecommerce_color ul li,.ecommerce_dres-type ul li {
     list-style-type: none;
     margin-bottom: 1em;
 }
 .ecommerce_color ul li:nth-child(2) a i {
-    background: brown;
+    background: #6D757A;
 }
 .ecommerce_color ul li:nth-child(3) a i {
-    background: #ffd400;
+    background: green;
 }
 .ecommerce_color ul li:nth-child(4) a i {
-    background: #d382ee;
+    background: red;
 }
 .ecommerce_color ul li:nth-child(5) a i {
-    background: #ff5e00;
+    background: yellow;
 }
 .ecommerce_color ul li:nth-child(6) a i {
     background: #0000ff;

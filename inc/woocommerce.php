@@ -107,15 +107,85 @@ function get_filter_products2()
    wp_die();
 }
 
-//Sidebar Categories
+//Sidebar Categories - Category display
 add_action('nm_woo_sidebar_categories', 'nm_woo_sidebar_categories_display', 10);
+add_action('nm_woo_get_variation', 'nm_woo_get_variation_color', 10);
+
+//Sidebar Categories - Color display
+function nm_woo_get_variation_color()
+{
+   global $product;
+   //$product = wc_get_products(get_the_id());
+
+   //$color = $product->get_attribute('color' );
+
+   //$koostis = array_shift( wc_get_product_terms( $product->id, 'color', array( 'fields' => 'names' ) ) );
+
+   //$test = wc_get_attribute_taxonomies();
+
+   // foreach(wc_get_attribute_taxonomies() as $attr){
+   //    echo $attr->attribute_name;
+   // } 
+
+   // $args = [
+   //    'post_type'      => 'product',
+   //    'post_status'  => 'publish',
+   //    'orderby' => 'publish_date',
+   //    'posts_per_page' => 8,
+   // ];
+
+   // $args['tax_query'] = [
+   //    [
+   //       'taxonomy' => 'pa_color',
+   //       'hide_empty' => false,
+   //       'field'    => 'slug',
+   //       'terms'    => 'yellow',
+   //    ]
+   // ];
+
+   // $products = new WP_Query($args);
+
+   // foreach($products as $test){
+   //    echo '<pre>'; 
+   //    print_r($test);
+   // }
+
+   // style.css line no: 1041
+   // .ecommerce_color ul li a i {background: #0000F7;}
+   //    .ecommerce_color ul li:nth-child(2) a i {
+   //       background: #6D757A;
+   //   }
+   //   .ecommerce_color ul li:nth-child(3) a i {
+   //       background: green;
+   //   }
+   //   .ecommerce_color ul li:nth-child(4) a i {
+   //       background: red;
+   //   }
+   //   .ecommerce_color ul li:nth-child(5) a i {
+   //       background: yellow;
+   //   }
+   //   .ecommerce_color ul li:nth-child(6) a i {
+   //       background: #0000ff;
+   //   }
+
+   $get_terms_color = get_terms([
+      'taxonomy' => 'pa_color',
+      //'fields' => 'names',
+      'hide_empty' => false,
+   ]);
+
+   foreach ($get_terms_color as $color) {
+      echo '<li><a href="' . $color->slug . '"><i></i> ' . $color->name . '(' . $color->count . ')</a></li>';
+   }
+}
 
 function nm_woo_sidebar_categories_display()
 {
 
    $terms = get_terms(array(
       'taxonomy' => 'product_cat',
-      'hide_empty' => false,
+      'hide_empty' => true,
+      'orderby' => 'name',
    ));
 
    if (!empty($terms) && is_array($terms)) {
@@ -127,9 +197,8 @@ function nm_woo_sidebar_categories_display()
          ]
       ];
 
-      foreach ($terms as $term) {   
+      foreach ($terms as $term) {
          echo wp_kses('<li><a href="/product-category/' . $term->slug . '">' . $term->name . '</a></li>', $allowed_tags);
       }
    }
-
 }
