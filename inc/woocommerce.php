@@ -38,6 +38,25 @@ add_action('nm_woo_get_categories', 'nm_woo_categories', 10);
 add_action('nm_woo_get_colors', 'nm_woo_colors', 10);
 add_action('nm_woo_get_sizes', 'nm_woo_sizes', 10);
 
+//Cart 
+add_action('nm_get_cart', 'nm_cart', 10);
+add_filter( 'woocommerce_add_to_cart_fragments', 'nm_cart_count');
+function nm_cart(){
+    echo '<a href="'.wc_get_cart_url().'" class="w3view-cart" name="nm_cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><div id="mini-cart-count"></div></a>';
+}
+
+function nm_cart_count($fragments){
+    ob_start();
+    $items_count = WC()->cart->get_cart_contents_count();
+    ?>
+    <span id="mini-cart-count"><?php echo $items_count ? $items_count : '0'; ?></span>
+    <?php
+        $fragments['#mini-cart-count'] = ob_get_clean();
+    return $fragments;
+
+    //force refresh : $(document.body).trigger('wc_fragment_refresh');
+}
+
 function get_filter_products2()
 {
 

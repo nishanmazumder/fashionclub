@@ -169,10 +169,9 @@ function nm_single_product_details()
             // if( WC()->cart->get_coupons() ){ 
             ?>
             <li>Ends on: Oct,15th</li>
-            <li><a href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
+            <li><a class="nm-coupon" href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
             <?php //} 
             ?>
-
         </ul>
     </div>
 

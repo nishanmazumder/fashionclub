@@ -121,11 +121,7 @@
         </div>
         <div class="col-md-1 cart-wthree">
             <div class="cart">
-                <form action="#" method="post" class="last">
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                </form>
+                <?php do_action('nm_get_cart'); ?>
             </div>
         </div>
         <div class="clearfix"></div>

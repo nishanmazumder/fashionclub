@@ -192,11 +192,12 @@ button.search {
     font-size: 34px;
     margin-top: 7px;
 }
-button.w3view-cart {
+a.w3view-cart {
     background: transparent;
     border: none;
+	color: #222;
 }
-button.w3view-cart:focus{
+a.w3view-cart:focus{
 	outline:none;
 }
 /*--//header--*/
