@@ -137,7 +137,19 @@ function nm_single_product_details()
             <?php } ?>
 
             <?php
+// https://stackoverflow.com/questions/66464462/how-to-get-coupons-from-email-restrictions-with-efficiency-in-woocommerce
+// $coupons = get_posts( array(
+			// 	'posts_per_page'   => -1,
+			// 	'orderby'          => 'name',
+			// 	'order'            => 'desc',
+			// 	'post_type'        => 'shop_coupon',
+			// 	'post_status'      => 'publish'
+			// ) );
 
+			// foreach( $coupons as $coupon) {
+			// 	$strcode = strtolower($coupon->post_title);	
+			// $full_coupon = new WC_Coupon( $strcode );
+			// }
 
             //$has_coupon = count(WC()->cart->applied_coupons) > 0 ? true : false;
             // $coupon_code = WC()->session->get('coupon_code');

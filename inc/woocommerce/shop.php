@@ -48,6 +48,7 @@ function nm_load_shop_layout()
     }
 }
 
+
 //Shop
 function nm_woo_main_container_start()
 {

@@ -33,6 +33,11 @@ add_action('template_redirect', 'nm_load_single_layout');
 add_action('wp_ajax_get_top_products', 'get_filter_products2');
 add_action('wp_ajax_nopriv_get_top_products', 'get_filter_products2');
 
+//Sidebar - CATEGORIES || COLOR || SIZE
+add_action('nm_woo_get_categories', 'nm_woo_categories', 10);
+add_action('nm_woo_get_colors', 'nm_woo_colors', 10);
+add_action('nm_woo_get_sizes', 'nm_woo_sizes', 10);
+
 function get_filter_products2()
 {
 
@@ -107,48 +112,29 @@ function get_filter_products2()
    wp_die();
 }
 
-//Sidebar Categories - Category display
-add_action('nm_woo_sidebar_categories', 'nm_woo_sidebar_categories_display', 10);
-add_action('nm_woo_get_variation', 'nm_woo_get_variation_color', 10);
+// getting taxonomy slug by name
+// function get_taxnomy_slug(){
+   
+//    $attribute_taxonomies = wc_get_attribute_taxonomies();
+//    $taxonomy_terms = array();
 
-//Sidebar Categories - Color display
-function nm_woo_get_variation_color()
+//    if ($attribute_taxonomies) :
+//       foreach ($attribute_taxonomies as $tax) :
+//          if (taxonomy_exists(wc_attribute_taxonomy_name($tax->attribute_name))) :
+//             $taxonomy_terms[$tax->attribute_name] = get_terms(wc_attribute_taxonomy_name($tax->attribute_name), 'orderby=name&hide_empty=0');
+//          endif;
+//       endforeach;
+//    endif;
+
+//    echo '<pre>'; 
+
+//    print_r(wc_attribute_taxonomy_name('size'));
+//    print_r($taxonomy_terms);
+// }
+
+// Get product Color
+function nm_woo_colors()
 {
-   global $product;
-   //$product = wc_get_products(get_the_id());
-
-   //$color = $product->get_attribute('color' );
-
-   //$koostis = array_shift( wc_get_product_terms( $product->id, 'color', array( 'fields' => 'names' ) ) );
-
-   //$test = wc_get_attribute_taxonomies();
-
-   // foreach(wc_get_attribute_taxonomies() as $attr){
-   //    echo $attr->attribute_name;
-   // } 
-
-   // $args = [
-   //    'post_type'      => 'product',
-   //    'post_status'  => 'publish',
-   //    'orderby' => 'publish_date',
-   //    'posts_per_page' => 8,
-   // ];
-
-   // $args['tax_query'] = [
-   //    [
-   //       'taxonomy' => 'pa_color',
-   //       'hide_empty' => false,
-   //       'field'    => 'slug',
-   //       'terms'    => 'yellow',
-   //    ]
-   // ];
-
-   // $products = new WP_Query($args);
-
-   // foreach($products as $test){
-   //    echo '<pre>'; 
-   //    print_r($test);
-   // }
 
    // style.css line no: 1041
    // .ecommerce_color ul li a i {background: #0000F7;}
@@ -168,18 +154,19 @@ function nm_woo_get_variation_color()
    //       background: #0000ff;
    //   }
 
-   $get_terms_color = get_terms([
+   $get_colors = get_terms([
       'taxonomy' => 'pa_color',
       //'fields' => 'names',
       'hide_empty' => false,
    ]);
 
-   foreach ($get_terms_color as $color) {
-      echo '<li><a href="' . $color->slug . '"><i></i> ' . $color->name . '(' . $color->count . ')</a></li>';
+   foreach ($get_colors as $color) {
+      echo '<li><a href="?filter_color=' . $color->slug . '"><i></i> ' . $color->name . '(' . $color->count . ')</a></li>';
    }
 }
 
-function nm_woo_sidebar_categories_display()
+// Get product categories
+function nm_woo_categories()
 {
 
    $terms = get_terms(array(
@@ -200,5 +187,17 @@ function nm_woo_sidebar_categories_display()
       foreach ($terms as $term) {
          echo wp_kses('<li><a href="/product-category/' . $term->slug . '">' . $term->name . '</a></li>', $allowed_tags);
       }
+   }
+}
+
+//Get product sizes
+function nm_woo_sizes()
+{
+   $get_sizes = get_terms('pa_size', array(
+      'hide_empty' => false,
+   ));
+
+   foreach ($get_sizes as $size) {
+      echo '<li><a href="?filter_size=' . $size->slug . '"> ' . $size->name . '</a></li>';
    }
 }

@@ -31,6 +31,7 @@ class Sidebar
     }
 
     public function register_sidbars(){
+       
         //Post Sidebar
         register_sidebar(
             array(
@@ -44,29 +45,22 @@ class Sidebar
             )
         );
 
-        //Services
+        //Shop
         register_sidebar(
             array(
-                'id'            => 'footer-services',
-                'name'          => __( 'Footer Services', 'nm_theme'),
-                'description'   => __( 'Widgets for footer services', 'nm_theme'),
-                'before_widget' => '<div id="%1$s" class="col-md-3 col-sm-6 col-xs-12 %2$s">',
+                'id'            => 'nm-woo-shop',
+                'name'          => __( 'Shop', 'nm_theme'),
+                'description'   => __( 'Widgets for shop page sidebar', 'nm_theme'),
+                //'before_sidebar' => '<div id="%1$s" class="w3ls_dresses_grid_left_grid %2$s">',
+                //'after_sidebar' => '</div>',
+                'before_widget' => '<div class="w3ls_dresses_grid_left_grid">',
                 'after_widget'  => '</div>',
-                'before_title'  => '',
-                'after_title'   => '',
+                'before_title'  => '<h3>',
+                'after_title'   => '</h3>',
             )
         );
 
-        //Social
-        register_sidebar(
-            array(
-                'id'            => 'footer-social',
-                'name'          => __( 'Footer Social', 'nm_theme'),
-                'description'   => __( 'Widgets for footer social', 'nm_theme'),
-            )
-        );
-
-        //Footer Widgets
+        //Footer
         register_sidebar(
             array(
                 'id'            => 'footer-sidebar',
