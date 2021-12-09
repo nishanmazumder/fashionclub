@@ -130,9 +130,7 @@
 
 <?php 
 
-if(is_front_page()){
-    get_template_part('template-parts/header/site', 'banner');
-}
+
 // elseif(is_shop()){
 //     echo '<div class="sub-banner my-banner3"></div>';
 // }

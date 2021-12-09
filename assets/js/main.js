@@ -122,6 +122,10 @@ jQuery(document).ready(function ($) {
 
 
     //Display coupon
+    $('.nm-coupon-list').hide();
+    $('.nm-coupon').on('click', function(){
+        $('.nm-coupon-list').toggle();
+    });
 
 
 });

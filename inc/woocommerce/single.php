@@ -25,7 +25,7 @@ function nm_load_single_layout()
         remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
         remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
         remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
-        
+
         //Single Variation data
         remove_action('woocommerce_single_variation', 'woocommerce_single_variation', 10);
 
@@ -48,8 +48,8 @@ function nm_single_add_to_cart()
 // Single Product Image + gallery
 function nm_single_product_image()
 {
-    global $product;
-    //$product = wc_get_product(get_the_ID());
+    //global $product;
+    $product = wc_get_product(get_the_ID());
 
     $feature_image = esc_url(get_the_post_thumbnail_url());
     $gallery_image_ids = $product->get_gallery_image_ids();
@@ -89,6 +89,7 @@ function nm_single_product_details()
 {
     global $product;
     //$product = wc_get_product(get_the_ID());
+
 ?>
     <h3 class="item_name"><?php echo $product->get_name(); ?></h3>
     <p><?php echo $product->get_short_description(); ?></p>
@@ -137,46 +138,35 @@ function nm_single_product_details()
             <?php } ?>
 
             <?php
-// https://stackoverflow.com/questions/66464462/how-to-get-coupons-from-email-restrictions-with-efficiency-in-woocommerce
-// $coupons = get_posts( array(
-			// 	'posts_per_page'   => -1,
-			// 	'orderby'          => 'name',
-			// 	'order'            => 'desc',
-			// 	'post_type'        => 'shop_coupon',
-			// 	'post_status'      => 'publish'
-			// ) );
-
-			// foreach( $coupons as $coupon) {
-			// 	$strcode = strtolower($coupon->post_title);	
-			// $full_coupon = new WC_Coupon( $strcode );
-			// }
-
-            //$has_coupon = count(WC()->cart->applied_coupons) > 0 ? true : false;
-            // $coupon_code = WC()->session->get('coupon_code');
-
-            // $coupon_code2 = WC()->cart->get_coupons();
-
-            // $product_id = new WC_Coupon();
-
-            // $parray = $product_id->get_product_ids();
-
-            // echo '<pre>'; 
-            // print_r($parray);
-
-            // //if( WC()->cart->get_coupons() ) echo "Coupon applied";
-
-
-            // if( WC()->cart->get_coupons() ){ 
-            ?>
-            <li>Ends on: Oct,15th</li>
-            <li><a class="nm-coupon" href="#"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a></li>
-            <?php //} 
-            ?>
+            $sale_date_to = $product->get_date_on_sale_to();
+            if ($sale_date_to) { ?>
+                <li>Ends on: <?php echo date("M j, Y", $sale_date_to->getTimestamp()); ?></li>
+            <?php } ?>
         </ul>
     </div>
 
     <div class="nm_product_category">
         <ul>
+            <li>
+                <a class="nm-coupon" href="javascript:void(0)"><i class="fa fa-gift" aria-hidden="true"></i> Coupon</a>
+                <ul class="nm-coupon-list">
+                    <?php
+                    $coupons = get_posts(array(
+                        'posts_per_page'   => -1,
+                        'orderby'          => 'name',
+                        'order'            => 'desc',
+                        'post_type'        => 'shop_coupon',
+                        'post_status'      => 'publish'
+                    ));
+
+                    foreach ($coupons as $coupon) { ?>
+                        <li>
+                            <p><?php echo '<strong>' . $coupon->post_title . '</strong>' . '  ' . $coupon->post_excerpt; ?></p>
+                        </li>
+                    <?php } ?>
+
+                </ul>
+            </li>
             <li>Category :</li>
             <?php
             $arg = ['taxonomy' => 'product_cat'];

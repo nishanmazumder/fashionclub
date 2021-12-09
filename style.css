@@ -171,6 +171,10 @@ ul.resp-tabs-list li:after {
     margin-bottom: 15px;
 }
 
+.nm-coupon{
+    margin-right: 10px;
+}
+
 /* Wishlist */
 .yith-wcwl-add-to-wishlist {
     margin-top: 0px !important;
@@ -259,6 +263,31 @@ ul.resp-tabs-list li:after {
     padding: 5px 10px;
     border-radius: 5px;
     color: #999;
+}
+
+/* Checkout */
+.woocommerce-billing-fields{
+    width: 500px;
+}
+
+.woocommerce-billing-fields input{
+    width: 500px !important;
+}
+
+.woocommerce form .form-row{
+    width: 100% !important;
+}
+
+#billing_first_name_field, #billing_last_name_field{
+    width: 250px !important;
+}
+#billing_first_name_field input, #billing_last_name_field input{
+    width: 235px !important;
+}
+
+#billing_last_name_field{
+    position: relative;
+    left: 15px;
 }
 
 

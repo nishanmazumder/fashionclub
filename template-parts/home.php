@@ -7,7 +7,13 @@
  */ 
 
 ?>
+<?php 
 
+if(is_front_page()){
+    get_template_part('template-parts/header/site', 'banner');
+}
+
+?>
 <div class="banner-bootom-w3-agileits">
 	<div class="container">
 		<div class="col-md-5 bb-grids bb-left-agileits-w3layouts">

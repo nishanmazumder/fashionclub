@@ -40,21 +40,67 @@ add_action('nm_woo_get_sizes', 'nm_woo_sizes', 10);
 
 //Cart 
 add_action('nm_get_cart', 'nm_cart', 10);
-add_filter( 'woocommerce_add_to_cart_fragments', 'nm_cart_count');
-function nm_cart(){
-    echo '<a href="'.wc_get_cart_url().'" class="w3view-cart" name="nm_cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><div id="mini-cart-count"></div></a>';
+add_filter('woocommerce_add_to_cart_fragments', 'nm_cart_count');
+function nm_cart()
+{
+   echo '<a href="' . wc_get_cart_url() . '" class="w3view-cart" name="nm_cart"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i><div id="mini-cart-count"></div></a>';
 }
 
-function nm_cart_count($fragments){
-    ob_start();
-    $items_count = WC()->cart->get_cart_contents_count();
-    ?>
-    <span id="mini-cart-count"><?php echo $items_count ? $items_count : '0'; ?></span>
-    <?php
-        $fragments['#mini-cart-count'] = ob_get_clean();
-    return $fragments;
+//Checkout
+add_filter('woocommerce_checkout_fields', 'nm_woo_remove_fields');
+function nm_woo_remove_fields($fields)
+{
+   // Add new fields
+   // $fields['billing']['billing_user_name'] = array(
+   //    'label' => __("Your Name", "nm_theme"),
+   //    'type'  => 'text',
+   //    'required' => true,
+   //    'class' => array('form-row-wide'),
+   //    'priority' => 26,
+   // );
 
-    //force refresh : $(document.body).trigger('wc_fragment_refresh');
+   $fields['billing']['billing_email']['priority'] = 26;
+   $fields['billing']['billing_phone']['priority'] = 27;
+
+   // Remove fields
+   // unset($fields['billing']['billing_first_name']);
+   // unset($fields['billing']['billing_last_name']);
+   unset($fields['billing']['billing_company']);
+   unset($fields['billing']['billing_postcode']);
+   // unset($fields['billing']['billing_country']);
+   unset($fields['billing']['billing_address_2']);
+   unset($fields['billing']['billing_state']);
+
+   return $fields;
+}
+
+// Add checkout field data to order details
+// add_action('woocommerce_checkout_update_order_meta', 'nm_woo_add_new_field_to_oderder');
+// function nm_woo_add_new_field_to_oderder($order_id)
+// {
+//    if (!empty($_POST['billing_user_name'])) {
+//       update_post_meta($order_id, 'billing_user_name', sanitize_text_field($_POST['billing_user_name'])); 
+//    }
+//    // echo '<p><b>Text:</b> '. get_post_meta($order->get_id(), '_user_name', true) . '</p>';
+// }
+
+
+// add_action( 'woocommerce_email_after_order_table', 'nm_woo_add_new_field_to_order_table_email', 10, 4 );
+// function nm_woo_add_new_field_to_order_table_email($order, $sent_to_admin, $plain_text, $email){
+//    echo '<p><b>Text:</b> '. get_post_meta($order->get_id(), '_user_name', true) . '</p>';
+// }
+
+function nm_cart_count($fragments)
+{
+   ob_start();
+   $items_count = WC()->cart->get_cart_contents_count();
+?>
+   <span id="mini-cart-count"><?php echo $items_count ? $items_count : '0'; ?></span>
+<?php
+   $fragments['#mini-cart-count'] = ob_get_clean();
+   return $fragments;
+
+   //force refresh : $(document.body).trigger('wc_fragment_refresh');
 }
 
 function get_filter_products2()
@@ -133,7 +179,7 @@ function get_filter_products2()
 
 // getting taxonomy slug by name
 // function get_taxnomy_slug(){
-   
+
 //    $attribute_taxonomies = wc_get_attribute_taxonomies();
 //    $taxonomy_terms = array();
 

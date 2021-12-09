@@ -30,9 +30,8 @@
     </script>
 
     <!-- font -->
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
     <?php wp_head(); ?>
 </head>
 
