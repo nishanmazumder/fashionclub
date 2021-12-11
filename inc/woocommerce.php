@@ -59,17 +59,24 @@ function nm_woo_remove_fields($fields)
    //    'priority' => 26,
    // );
 
-   $fields['billing']['billing_email']['priority'] = 26;
-   $fields['billing']['billing_phone']['priority'] = 27;
+   $fields['billing']['billing_phone']['priority'] = 26;
+   $fields['billing']['billing_email']['priority'] = 27;
+   $fields['billing']['billing_state']['priority'] = 28;
+   $fields['billing']['billing_city']['priority'] = 29;
 
    // Remove fields
    // unset($fields['billing']['billing_first_name']);
    // unset($fields['billing']['billing_last_name']);
    unset($fields['billing']['billing_company']);
    unset($fields['billing']['billing_postcode']);
-   // unset($fields['billing']['billing_country']);
+   unset($fields['billing']['billing_country']);
    unset($fields['billing']['billing_address_2']);
-   unset($fields['billing']['billing_state']);
+   // unset($fields['billing']['billing_state']);
+
+   unset($fields['shipping']['shipping_company']);
+   unset($fields['shipping']['shipping_postcode']);
+   unset($fields['shipping']['shipping_country']);
+   unset($fields['shipping']['shipping_address_2']);
 
    return $fields;
 }
@@ -89,6 +96,13 @@ function nm_woo_remove_fields($fields)
 // function nm_woo_add_new_field_to_order_table_email($order, $sent_to_admin, $plain_text, $email){
 //    echo '<p><b>Text:</b> '. get_post_meta($order->get_id(), '_user_name', true) . '</p>';
 // }
+
+// Set default country Bangladesh
+add_filter('default_checkout_billing_country', 'nm_set_default_country');
+function nm_set_default_country()
+{
+   return "BD";
+}
 
 function nm_cart_count($fragments)
 {
