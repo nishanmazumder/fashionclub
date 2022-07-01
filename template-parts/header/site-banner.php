@@ -9,7 +9,7 @@
 ?>
 
 <!-- Banner -->
-<div class="banner-agile">
+<!-- <div class="banner-agile">
 	<div class="container">
 		<h2>WELCOME TO</h2>
 		<h3>FASHION <span>CLUB</span></h3>
@@ -17,4 +17,6 @@
 			vehicula tristique. </p>
 		<a href="about.html">Read More</a>
 	</div>
-</div>
+</div> -->
+
+<?php echo do_shortcode("[psfw slug='main-slider']"); ?>

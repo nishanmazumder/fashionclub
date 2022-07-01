@@ -13,6 +13,8 @@ require_once NM_DIR_PATH . '/inc/woocommerce/shop.php';
 // Single product
 require_once NM_DIR_PATH . '/inc/woocommerce/single.php';
 
+require_once NM_DIR_PATH . '/inc/woocommerce/woo-single.php';
+
 //Main Container
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
