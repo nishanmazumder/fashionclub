@@ -198,46 +198,13 @@ function nm_single_product_details()
 
 
 // Additional Information
-
-// Add custom Meta box to admin products pages - Composition and care
-add_action('add_meta_boxes', 'create_product_size_chart_meta_box');
-function create_product_size_chart_meta_box()
-{
-    add_meta_box(
-        'size_chart_meta_box',
-        __('Size Chart', 'cmb'),
-        'add_size_chart_meta_box',
-        'product',
-        'normal',
-        'default'
-    );
-}
-
-// Custom metabox content in admin product pages
-function add_size_chart_meta_box($post)
-{
-    $product = wc_get_product($post->ID);
-    $content = $product->get_meta('_size_chart');
-
-    echo '<div class="product_size_chart">';
-
-    wp_editor($content, '_size_chart', ['textarea_rows' => 10]);
-
-    echo '</div>';
-}
-
-// Save WYSIWYG field value from product admin pages
-add_action('woocommerce_admin_process_product_object', 'save_size_chart_wysiwyg_field', 11, 1);
-function save_size_chart_wysiwyg_field($product)
-{
-    if (isset($_POST['_size_chart']))
-        $product->update_meta_data('_size_chart', wp_kses_post($_POST['_size_chart']));
-}
-
-// Display data as shortcode
-function nm_woo_additional_info_size_chart()
-{
+// Get Short Description
+function nm_short_des(){
     global $product;
-    echo '<div class="wrapper-size_chart">' . $product->get_meta('_size_chart') . '</div>';
+    //$product = wc_get_product(get_the_id());
+	$description = $product->get_short_description();
+	
+	echo $description;
 }
-add_shortcode('nm_woo_size', 'nm_woo_additional_info_size_chart');
+add_shortcode('nm_description', 'nm_short_des');
+
